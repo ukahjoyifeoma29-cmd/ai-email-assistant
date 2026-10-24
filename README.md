@@ -15,8 +15,17 @@ I built 3 live automation systems for small businesses — from inbox triage to 
 ### 1. AI Email Assistant (n8n) — Main Project [STAR]
 **Flow:** Gmail Trigger → Classify Email (OpenAI) → Extract Fields → If Urgent or Client → Log to Sheet + Slack Alert + Generate Draft → Reply
 
-**Screenshots:** 
-- Workflow: `screenshots/01-gmail-triage-workflow.png`
+**Screenshots:**
+![Gmail Triage Workflow](screenshots/01-gmail-triage-workflow.png)
+
+**Screenshot:**
+![Order Router Paths](screenshots/02-order-router-paths.png)
+
+**Screenshot:**
+![Auto Responder](screenshots/03-auto-responder.png)
+
+**Certificate:**
+![DV Academy Certificate](screenshots/04-certificate-dv-academy.png)
 
 **Production Features I Implemented:**
 - **Idempotency:** Uses Gmail `threadId` as unique key. Function node checks Google Sheets for existing threadId before processing — prevents duplicate drafts if webhook fires twice.
