@@ -59,12 +59,6 @@ I built 3 live automation systems for small businesses — from inbox triage to 
 ## 📸 Architecture
 - Joy (ukahjoyifeoma29-cmd)
 
-Here are the actual workflows I built:
 
-![Workflow 1](IMG-20260823-WA0001.jpg)
-![Workflow 2](IMG-20260823-WA0005.jpg)
-![Workflow 3](IMG-20260823-WA0004.jpg)
 
-## My Certificate
 
-![Certificate](IMG-20260823-WA0000.jpg)
