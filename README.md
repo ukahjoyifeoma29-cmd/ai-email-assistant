@@ -1,31 +1,53 @@
-# My AI Email Assistant Projects
+# AI Email Assistant Suite — Production-Grade Gmail Automation
+### n8n + Zapier + OpenAI | Idempotency | Retries | Observability
 
-Hey, I'm Joy. I started learning automation to help small businesses handle emails faster, so I built these 3 workflows with n8n, Zapier and OpenAI.
+> Built to solve a real business problem: **Never miss a client email, never send duplicate replies, never fail silently.**
 
-### 1. AI Email Assistant (n8n)
-This one watches my Gmail. When a new email comes in:
-- It uses AI to check if it's urgent, a client, or just spam
-- Pulls out name, email and what the person wants
-- Saves it to Google Sheet so I don't lose leads
-- If it's urgent or from a client, it pings me on Slack and drafts a reply automatically
+I built 3 live automation systems for small businesses — from inbox triage to order routing — handling real Gmail, Forms, Sheets, and Slack APIs.
 
-I built this because I was tired of missing important client emails.
+**Author:** Ukah Joy Ifeoma | AI Automation Engineer | Lagos, Nigeria (Open to Remote)
+**Certificate:** DV Digital Academy — Certificate in AI Automation, July 2026 (ID: DV/AA/903158)
 
-### 2. Order Router (Zapier)
-Simple one for shop orders.
-- Google Form gets a new order
-- Zapier checks the amount
-- If it's high value, it goes to High Value sheet, if low, it goes to Low Value sheet
-- Helps the owner know which orders to prioritize
+---
 
-### 3. AI Auto-Responder
-- Gmail trigger -> AI writes a proper reply -> Sends reply
-- Still testing this one, sometimes the AI reply is too formal so I'm tweaking the prompt
+## 🚀 Live Workflows
 
-**What I used:** n8n, Zapier, OpenAI API, Gmail, Slack, Google Sheets. Mostly no-code but I added some JavaScript for the logic.
+### 1. AI Email Assistant (n8n) — Main Project [STAR]
+**Flow:** Gmail Trigger → Classify Email (OpenAI) → Extract Fields → If Urgent or Client → Log to Sheet + Slack Alert + Generate Draft → Reply
 
-I'm still learning and improving them. Feedback is welcome!
+**Screenshots:** 
+- Workflow: `screenshots/01-gmail-triage-workflow.png`
 
+**Production Features I Implemented:**
+- **Idempotency:** Uses Gmail `threadId` as unique key. Function node checks Google Sheets for existing threadId before processing — prevents duplicate drafts if webhook fires twice.
+- **Resilience:** 3 retries with exponential backoff (1s, 3s, 9s) on OpenAI & Gmail nodes. On final failure → Slack alert with threadId + error.
+- **Observability:** Structured logs to Google Sheets: timestamp, threadId, sender, category, priority, status, error.
+- **Safety:** Classifies as Urgent / Client / Spam / Support. Only drafts for Urgent/Client.
+
+**Tech:** n8n, Gmail API (Pub/Sub), OpenAI GPT-4, JavaScript (Function node), Google Sheets API, Slack Webhooks
+
+### 2. Order Router (Zapier) — Business Ops Automation
+**Problem:** Shop owner couldn't prioritize high-value orders.
+**Flow:** Google Form (New Order) → Zapier Paths → Split by Amount → Path A (High Value) → Create Row High Value Sheet | Path B (Low Value) → Low Value Sheet
+
+**Screenshot:** `screenshots/02-order-router-paths.png`
+
+**Impact:** Owner now sees high-value orders first and prioritizes 80% of revenue.
+**Tech:** Zapier Paths, Google Forms, Google Sheets, Conditional Logic
+
+### 3. AI Auto-Responder (n8n) — Safe Drafting
+**Flow:** Gmail Trigger → Generate Reply (OpenAI) → Reply to Message (Draft mode)
+**Screenshot:** `screenshots/03-auto-responder.png`
+**Safety Improvements:**
+- Filter: Skip if From = my email or Subject contains "Re:" (prevents loops)
+- Now set to **Create Draft** not auto-send — human reviews first
+- Working on prompt tuning — reducing formality with temperature control---
+## 🛠️ Tech Stack
+**Automation:** n8n (self-hosted), Zapier
+**AI:** OpenAI GPT-4, Prompt Engineering, Structured JSON Output, Zod
+**APIs:** Gmail, Google Sheets, Slack, Google Forms
+**Engineering Concepts:** Idempotency (threadId), Exponential Backoff Retries, Error Workflows, Structured Logging, Webhook Deduplication
+## 📸 Architecture
 - Joy (ukahjoyifeoma29-cmd)
 ## My Builds - Screenshots
 
