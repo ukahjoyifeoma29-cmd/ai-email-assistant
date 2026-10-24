@@ -49,7 +49,6 @@ I built 3 live automation systems for small businesses — from inbox triage to 
 **Engineering Concepts:** Idempotency (threadId), Exponential Backoff Retries, Error Workflows, Structured Logging, Webhook Deduplication
 ## 📸 Architecture
 - Joy (ukahjoyifeoma29-cmd)
-## My Builds - Screenshots
 
 Here are the actual workflows I built:
 
